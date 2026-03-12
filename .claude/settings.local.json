@@ -1,7 +1,5 @@
 {
   "permissions": {
-    "allow": [
-      "mcp__notion__notion-fetch"
-    ]
+    "allow": ["mcp__notion__notion-fetch"]
   }
 }

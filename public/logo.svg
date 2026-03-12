@@ -1,0 +1,31 @@
+<svg width="400" height="400" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+  <!-- 배경 -->
+  <rect width="400" height="400" fill="#0d0d0d"/>
+
+  <!-- 달 -->
+  <circle cx="200" cy="200" r="178" fill="#fde68a"/>
+
+  <!-- ✦ 스파클 -->
+  <polygon points="358,38 361,48 371,51 361,54 358,64 355,54 345,51 355,48" fill="#fbcfe8"/>
+
+  <!-- sukiverse 텍스트 (풍선 느낌: 두꺼운 stroke + bold fill) -->
+  <text
+    x="200"
+    y="200"
+    text-anchor="middle"
+    dominant-baseline="middle"
+    font-family="'Fredoka One', 'Nunito', 'Varela Round', sans-serif"
+    font-size="52"
+    font-weight="800"
+    letter-spacing="2"
+    textLength="300"
+    lengthAdjust="spacingAndGlyphs"
+    paint-order="stroke fill"
+    stroke="#0d0d0d"
+    stroke-width="3"
+    stroke-linejoin="round"
+    fill="#0d0d0d"
+  >sukiverse</text>
+
+</svg>
