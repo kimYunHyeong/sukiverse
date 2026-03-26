@@ -62,8 +62,7 @@
 
 ### 인증
 
-- **소셜 로그인**: next-auth@4 — Google OAuth + Kakao OAuth (결정 2026-02-28)
-- 환경변수: `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET`, `KAKAO_CLIENT_ID`, `KAKAO_CLIENT_SECRET`, `NEXTAUTH_SECRET`, `NEXTAUTH_URL`
+- **소셜 로그인**: next-auth@4 — Google OAuth + Kakao OAuth
 
 ### 상태 & 데이터
 
@@ -116,7 +115,7 @@ sukiverse/
 
 ### FSD + Next.js App Router 충돌 해결 방식
 
-> FSD 공식 문서 기준 (결정 2026-02-28)
+> FSD 공식 문서 기준
 
 - `app/` 폴더는 라우팅 전용 — FSD 컴포넌트를 직접 작성하지 않음
 - `app/[route]/page.ts`에서 `src/pages/[page]/index.ts`를 re-export
@@ -124,14 +123,19 @@ sukiverse/
 
 ---
 
+## 디자인
+
+- 레퍼런스: LAFTEL(라프텔) 스타일 다크 테마
+- 다크 테마 + 노란색 계열의 primary color 사용
+- 반응형 웹 디자인
+- 모바일 베이스로 우선 개발 진행 => 데스크톱 => 테블릿 순으로 진행
+
+---
+
 ## 제약 사항
 
 - 백엔드 기술 스택 미결정 — 별도 지시 전까지 백엔드 코드 작성 안 함
-- 모노레포 도구(pnpm workspaces / Turborepo) 최종 선택 미결정
-- `client/` 폴더 분리 — 현재 루트가 Next.js 앱 구성, 별도 지시 후 진행
-- 카카오 앱 설정: Redirect URI `{NEXTAUTH_URL}/api/auth/callback/kakao` 등록 필요
 - Storybook: Node.js 20.19+ 요구로 설치 보류 (현재 v20.17.0)
-- 디자인 레퍼런스: LAFTEL(라프텔) 스타일 다크 테마 — 컬러 변수는 `src/app/styles/globals.css` 참조
 
 ---
 
@@ -147,11 +151,9 @@ sukiverse/
 
 ## 절대 하지 말아야 할 것
 
-- 말한 것 이상으로 개발하지 않기
+- 말한 것 이상으로 개발하지 않기(허가 없이 파일을 생성·수정·삭제하지 않기)
 - 기능 추가 시 기존 기능 깨뜨리지 않기
 - `.env` 파일에 실제 값 넣지 않기
-- 허가 없이 파일을 생성·수정·삭제하지 않기
-- 이미 결정난 사안을 재논의하지 않기
 
 ---
 
