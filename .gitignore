@@ -44,3 +44,6 @@ next-env.d.ts
 .claude
 *storybook.log
 storybook-static
+
+# style-dictionary build output (generated — do not edit manually)
+src/styles/tokens.css
