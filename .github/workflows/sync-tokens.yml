@@ -1,0 +1,53 @@
+name: Sync Design Tokens
+
+on:
+  push:
+    branches:
+      - design/tokens
+    paths:
+      - 'design/tokens.json'
+
+jobs:
+  build-tokens:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: design/tokens
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build tokens
+        run: npm run build:tokens
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: 'design: 디자인 토큰 자동 변환 업데이트'
+          branch: design/tokens-built
+          base: develop
+          title: '[Design Token] 피그마 토큰 업데이트'
+          body: |
+            ## 변경 사항
+            피그마 토큰 스튜디오에서 변경된 토큰이 자동으로 변환되었습니다.
+
+            - 소스: `design/tokens.json`
+            - 결과: `src/styles/tokens.css`
+
+            > 자동 생성된 PR입니다. 변경 내용을 확인 후 머지해주세요.
+          labels: design-tokens
+          draft: false

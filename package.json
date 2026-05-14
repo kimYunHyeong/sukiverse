@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "build:tokens": "node sd.config.js"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.100.10",
@@ -48,6 +49,7 @@
     "eslint-plugin-storybook": "^10.4.0",
     "playwright": "^1.60.0",
     "storybook": "^10.4.0",
+    "style-dictionary": "^5.4.0",
     "tailwindcss": "^4",
     "typescript": "^5",
     "vite": "^8.0.13",
