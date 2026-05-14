@@ -11,7 +11,7 @@ const pretendard = localFont({
 
 export const metadata: Metadata = {
   title: "sukiverse",
-  description: "애니메이션, J-POP, 성우 정보를 하나의 연결된 세계관처럼 제공",
+  description: "애니메이션, J-POP, 성우 정보를 하나의 세계관에서",
 };
 
 export default function RootLayout({

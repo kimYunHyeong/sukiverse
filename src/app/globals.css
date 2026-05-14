@@ -25,6 +25,15 @@
   --color-popover: var(--popover);
   --color-card-foreground: var(--card-foreground);
   --color-card: var(--card);
+
+  /* semantic background tokens */
+  --color-background-page: var(--token-semantic-color-background-page);
+  --color-background-app: var(--token-semantic-color-background-app);
+  --color-background-surface: var(--token-semantic-color-background-surface);
+  --color-background-elevated: var(--token-semantic-color-background-elevated);
+  --color-background-hover: var(--token-semantic-color-background-hover);
+  --color-background-brand: var(--token-semantic-color-background-brand);
+  --color-background-brand-subtle: var(--token-semantic-color-background-brand-subtle);
   --radius-sm: calc(var(--radius) * 0.6);
   --radius-md: calc(var(--radius) * 0.8);
   --radius-lg: var(--radius);
