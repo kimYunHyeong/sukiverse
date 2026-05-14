@@ -1,163 +1,36 @@
-# 🌸 Sukiverse
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-> 일본 문화 콘텐츠를 한 곳에서 연결하는 커뮤니티 플랫폼
+## Getting Started
 
-한국 젊은 세대 사이에서 증가하는 일본 문화(애니메이션, J-POP, 패션)에 대한 관심을 기반으로,  
-분산되어 있는 정보를 **하나의 연결된 경험**으로 제공하는 플랫폼입니다.
+First, run the development server:
 
----
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
 
-## ❔ Problem
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-최근 한국의 10대 / 20대를 중심으로
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-- 일본 애니메이션
-- J-POP
-- 일본 스트릿 & 갸루 패션
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-에 대한 관심이 빠르게 증가하고 있습니다.
+## Learn More
 
-하지만 사용자는 다음과 같은 문제를 겪고 있습니다.
+To learn more about Next.js, take a look at the following resources:
 
-- 애니메이션 정보 / OST / 성우 정보를 한 번에 확인하기 어려움
-- 노래를 듣다가 해당 애니와의 연결 정보를 찾기 어려움
-- 일본 패션 트렌드를 찾기 위해 여러 SNS를 돌아다녀야 함
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-👉 즉, **문화는 연결되어 있는데 정보는 연결되어 있지 않음**
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
----
+## Deploy on Vercel
 
-## 🎯 Target Users
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-- 일본 애니메이션을 좋아하는 사람
-- J-POP을 즐겨 듣는 사람
-- 일본 패션(스트릿, 갸루 등)에 관심 있는 사람
-- Z세대 / 알파세대
-
----
-
-## 💡 Solution
-
-**Sukiverse는 일본 문화 정보를 하나의 세계관처럼 연결합니다.**
-
-애니메이션, 음악, 패션을 개별 정보가 아닌  
-👉 **서로 연결된 취향 네트워크**로 제공합니다.
-
----
-
-## 🌟 Core Features
-
-### 🎬 Animation
-
-- 애니메이션 정보 제공
-  - 순위
-  - 장르
-  - 방영 시기
-  - 시리즈 정보
-
-- 연관 정보 연결
-  - OST
-  - 성우
-
-- 커뮤니티 기능
-  - 추천 / 비추천
-  - 댓글
-
-- 유사 애니메이션 추천
-
----
-
-### 🎧 J-POP
-
-- 곡 정보 제공
-  - 장르
-  - 가수
-  - 유튜브 링크
-
-- 아티스트 정보
-  - 다른 곡
-  - 앨범
-
-- 애니메이션과 연결
-  - OST일 경우 해당 애니 정보 제공
-
-- 커뮤니티 기능
-  - 추천 / 비추천
-  - 댓글
-
-- 유사 곡 추천
-
----
-
-### 👗 Fashion
-
-- 일본 인플루언서 OOTD
-  - SNS 연동
-
-- 착용 아이템 정보
-  - 가격
-  - 판매처
-
-- 유저 OOTD 업로드
-
-- 커뮤니티 기능
-  - 추천 / 비추천
-  - 댓글
-
----
-
-## 🔍 Market Insight
-
-- 애니메이션 극장판 흥행 지속
-- J-POP의 역주행 및 인기 상승
-- 일본 패션 트렌드 재부상 (스트릿 / 갸루)
-- SNS 기반 일본 문화 콘텐츠 소비 증가
-
-👉 일본 문화는 이미 **메인스트림 관심사로 확장 중**
-
----
-
-## ⚔️ Competitors
-
-| 플랫폼               | 특징           | 한계                        |
-| -------------------- | -------------- | --------------------------- |
-| 위키형 사이트        | 정보 탐색 용이 | 신뢰성 부족 / 커뮤니티 없음 |
-| 애니 스트리밍 플랫폼 | 영상 중심      | OST / 패션 연결 부족        |
-| 영상 정보 플랫폼     | 배우 중심 정보 | 캐릭터 / 음악 연결 부족     |
-
-👉 Sukiverse는 **문화 간 연결성**에 집중합니다.
-
----
-
-## 🛠 Challenges
-
-- 애니 / OST / 성우 데이터 연결 구조 설계
-- 커뮤니티 기능 구현
-- AI 기반 추천 시스템 구축
-- 콘텐츠 저작권 관리
-
----
-
-## 📱 Platform Direction
-
-- 모바일 중심 UX
-- 취향 기반 탐색 구조
-- 커뮤니티 중심 확장
-
----
-
-## 🚀 Future Expansion
-
-- 애니 & 음악 구독 서비스
-- 패션 및 굿즈 커머스
-- 일본 여행 / 드라마 / 음식 콘텐츠 확장
-
-👉 궁극적으로  
-**일본 문화 종합 플랫폼**으로 성장
-
----
-
-## ✨ Vision
-
-Sukiverse는 단순한 정보 플랫폼이 아니라  
-취향이 연결되는 문화 세계를 만듭니다.
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.

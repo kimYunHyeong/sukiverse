@@ -1,21 +1,19 @@
-# CLAUDE.md — Sukiverse 프로젝트 개발 가이드
+# CLAUDE.md — sukiverse 프로젝트 개발 가이드
 
 ## 기본 지시사항
 
 - **소통 언어**: 모든 설명, 질문, 답변은 한국어로 진행. 코드 식별자(변수명, 함수명 등)는 영어 유지
 - **코드 작성 금지**: 별도의 명시적 지시가 있을 때까지 코드를 작성하지 않음
 - **CLAUDE.md 우선 참조**: 세션 시작 시 전체 파일을 탐색하지 않고, 이 파일 기반으로 맥락 파악
-- **research.md 기록**: Plan Mode 중 발견한 내용·분석·제안은 `research.md`에 상세 기록
-- **skills.md 작성**: 기능(feature) 개발 시 구현 전략을 `skills.md`에 문서화 후 진행
 
 ---
 
 ## 프로젝트 개요
 
-- **project name**: Sukiverse (好き + universe)
-- **mission**: "애니메이션, J-POP, 일본 패션 정보를 하나의 연결된 세계관처럼 제공"
+- **project name**: sukiverse (好き + universe)
+- **mission**: "애니메이션, J-POP, 성우 정보를 하나의 연결된 세계관처럼 제공"
 - **cross domain**: 일본 문화 콘텐츠 종합 플랫폼
-- **scope**: Front End 전용 프로젝트 (Back End 로직은 다루지 않음)
+- **scope**: Front End 전용 프로젝트 (Back End 로직은 직접 작성하지 않음)
 - **deploy**: Vercel
 
 ### 타겟 사용자
@@ -27,12 +25,12 @@
 
 ## 핵심 기능
 
-| 기능         | 설명                                                                            |
-| ------------ | ------------------------------------------------------------------------------- |
-| Animation    | 순위/장르/시리즈/방영시기, 삽입 음악·성우 연결, 커뮤니티, 유사 애니 추천        |
-| J-POP        | 곡 정보(순위/장르/가수/YouTube 링크), 아티스트·앨범, 애니메이션 연결, 커뮤니티  |
-| Fashion      | 인플루언서 OOTD(Instagram 연동), 아이템 정보(가격/판매처), 유저 업로드 커뮤니티 |
-| cross domain | 애니↔J-POP(삽입곡), J-POP↔성우, 애니메이션↔성우                                 |
+| 기능         | 설명                                                                           |
+| ------------ | ------------------------------------------------------------------------------ |
+| Animation    | 순위/장르/시리즈/방영시기, 삽입 음악·성우 연결, 커뮤니티, 유사 애니 추천       |
+| J-POP        | 곡 정보(순위/장르/가수/YouTube 링크), 아티스트·앨범, 애니메이션 연결, 커뮤니티 |
+| 성우         | 성우가 연기한 캐릭터, 애니메이션 정보를 제공                                   |
+| cross domain | 애니↔J-POP(삽입곡), J-POP↔성우, 애니메이션↔성우                                |
 
 ---
 
@@ -42,7 +40,6 @@
 - **Phase 2**: Animation 기능 (정보 탐색·추천)
 - **Phase 3**: J-POP 기능 (곡·아티스트 탐색)
 - **Phase 4**: 크로스 도메인 연결 & 커뮤니티
-- **Phase 5**: Fashion 기능 (OOTD·아이템 탐색)
 
 ---
 
@@ -75,51 +72,10 @@
 - react-hook-form
 - zod
 
-### 차트
-
-- recharts
-
 ### 테스트
 
 - **모듈 테스트**: Vitest, @testing-library/react
 - **E2E 테스트**: Playwright
-
----
-
-## FSD 파일 구조
-
-```
-sukiverse/
-├── app/                    # Next.js App Router (라우팅 re-export 전용)
-│   ├── layout.ts           # src/app/layouts/RootLayout re-export
-│   ├── page.ts             # src/pages/home/HomePage re-export
-│   └── [route]/
-│       └── page.ts         # 각 FSD 페이지 컴포넌트 re-export
-│
-└── src/                    # FSD 소스 코드
-    ├── app/                # App Layer: 공유 레이아웃 & 전역 설정
-    │   ├── layouts/        # RootLayout 등
-    │   └── styles/         # globals.css 등
-    ├── pages/              # Page Layer: 페이지 단위 컴포넌트
-    │   └── [page-name]/
-    │       ├── index.ts    # 공개 API (re-export)
-    │       └── ui/         # 페이지 컴포넌트
-    ├── widgets/            # Widget Layer: 독립적인 복합 블록
-    ├── features/           # Feature Layer: 사용자 인터랙션 기능
-    │   └── [feature-name]/
-    │       ├── index.ts
-    │       └── ui/
-    ├── entities/           # Entity Layer: Animation, J-POP, Fashion 등
-    └── shared/             # Shared Layer: 공통 유틸/상수/타입
-```
-
-### FSD + Next.js App Router 충돌 해결 방식
-
-> FSD 공식 문서 기준
-
-- `app/` 폴더는 라우팅 전용 — FSD 컴포넌트를 직접 작성하지 않음
-- `app/[route]/page.ts`에서 `src/pages/[page]/index.ts`를 re-export
-- FSD `pages` 레이어명 그대로 유지 (`views`로 변경 안 함)
 
 ---
 
@@ -132,10 +88,88 @@ sukiverse/
 
 ---
 
+## 백엔드 스펙 (프론트 참조용)
+
+> 백엔드 코드는 직접 작성하지 않음. API 연동·인증 흐름 설계 시 참조.
+
+### API 서버
+
+- **언어·프레임워크**: Kotlin + Spring Boot
+- **인증·인가**: Spring Security + JWT (Bearer 토큰)
+- **소셜 로그인**: OAuth2 Client — Google, Kakao
+- **인증 흐름**: 백엔드가 OAuth2 처리 후 JWT 발급 → 프론트는 JWT를 `Authorization: Bearer <token>` 헤더로 전송
+
+### 데이터베이스
+
+- **PostgreSQL**: 회원 정보(즐겨찾기·리뷰·좋아요), 애니메이션(제목·장르·성우·OST·줄거리), J-POP(제목·가수·가사·카테고리)
+- **Redis**: 세션·토큰 임시 저장, 인기 추천 결과, 랭킹 목록 캐싱
+
+### 인프라
+
+- **AWS**: EC2(서버), S3(스토리지), CloudFront(CDN), ElastiCache(Redis), CloudWatch(모니터링)
+- **배포**: Docker 기반
+
+---
+
 ## 제약 사항
 
-- 백엔드 기술 스택 미결정 — 별도 지시 전까지 백엔드 코드 작성 안 함
-- Storybook: Node.js 20.19+ 요구로 설치 보류 (현재 v20.17.0)
+- 백엔드 코드 직접 작성 안 함 (API 연동 코드만 작성)
+- Storybook: v10.4.0 설치 완료 (`npm run storybook` → localhost:6006)
+
+---
+
+## 폴더 구조
+
+```
+src/
+├── app/                        # Next.js App Router (라우팅 전용)
+│   ├── layout.tsx
+│   ├── globals.css
+│   ├── page.tsx
+│   ├── login/page.tsx
+│   ├── animation/page.tsx
+│   ├── jpop/page.tsx
+│   ├── seiyuu/page.tsx
+│   └── api/auth/[...nextauth]/route.ts
+│
+├── features/                   # 도메인별 기능 묶음 (핵심)
+│   ├── auth/
+│   │   ├── components/         # LoginButton, AuthGuard 등
+│   │   ├── hooks/              # useAuth
+│   │   └── types.ts
+│   ├── animation/
+│   │   ├── components/
+│   │   ├── hooks/
+│   │   └── types.ts
+│   ├── jpop/
+│   │   ├── components/
+│   │   ├── hooks/
+│   │   └── types.ts
+│   └── seiyuu/
+│       ├── components/
+│       ├── hooks/
+│       └── types.ts
+│
+├── components/                 # 전역 공통 컴포넌트
+│   ├── ui/                     # shadcn/ui (수정 금지)
+│   └── layout/                 # Header, Footer, MobileNav
+│
+├── lib/                        # 외부 라이브러리 초기화 & 설정
+│   ├── auth.ts                 # NextAuth authOptions
+│   ├── axios.ts
+│   └── query-client.ts
+│
+├── hooks/                      # 전역 공통 커스텀 훅
+└── types/                      # 전역 공유 타입
+```
+
+### 폴더 구조 원칙
+
+| 원칙 | 설명 |
+|------|------|
+| **도메인 응집** | animation 관련 컴포넌트·훅·타입은 `features/animation/` 안에서만 |
+| **공통의 기준** | 2개 이상 도메인에서 쓰이면 `components/` 또는 `hooks/`로 올림 |
+| **app/ 는 얇게** | 라우팅과 레이아웃만. 비즈니스 로직은 features/로 |
 
 ---
 
@@ -145,7 +179,7 @@ sukiverse/
 - **포매팅**: Prettier (semi: false, singleQuote: true, tabWidth: 2)
 - **린팅**: ESLint (Next.js Core Web Vitals + TypeScript)
 - **컴포넌트 파일**: PascalCase (예: `LoginPage.tsx`)
-- **인덱스 파일**: 각 슬라이스의 공개 API는 `index.ts`로 re-export
+- **인덱스 파일**: 각 feature의 공개 API는 `index.ts`로 re-export
 
 ---
 
@@ -154,17 +188,3 @@ sukiverse/
 - 말한 것 이상으로 개발하지 않기(허가 없이 파일을 생성·수정·삭제하지 않기)
 - 기능 추가 시 기존 기능 깨뜨리지 않기
 - `.env` 파일에 실제 값 넣지 않기
-
----
-
-## 주요 파일 경로
-
-| 역할            | 경로                               |
-| --------------- | ---------------------------------- |
-| 루트 레이아웃   | `src/app/layouts/index.tsx`        |
-| 전역 스타일     | `src/app/styles/globals.css`       |
-| 홈 페이지       | `src/pages/home/ui/HomePage.tsx`   |
-| 로그인 페이지   | `src/pages/login/ui/LoginPage.tsx` |
-| Next.js 설정    | `next.config.ts`                   |
-| TypeScript 설정 | `tsconfig.json`                    |
-| Prettier 설정   | `.prettierrc`                      |
