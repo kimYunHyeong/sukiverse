@@ -129,7 +129,7 @@ src/
 │   ├── login/page.tsx
 │   ├── animation/page.tsx
 │   ├── jpop/page.tsx
-│   ├── seiyuu/page.tsx
+│   ├── actor/page.tsx
 │   └── api/auth/[...nextauth]/route.ts
 │
 ├── features/                   # 도메인별 기능 묶음 (핵심)
@@ -145,7 +145,7 @@ src/
 │   │   ├── components/
 │   │   ├── hooks/
 │   │   └── types.ts
-│   └── seiyuu/
+│   └── actor/
 │       ├── components/
 │       ├── hooks/
 │       └── types.ts
@@ -180,6 +180,45 @@ src/
 - **린팅**: ESLint (Next.js Core Web Vitals + TypeScript)
 - **컴포넌트 파일**: PascalCase (예: `LoginPage.tsx`)
 - **인덱스 파일**: 각 feature의 공개 API는 `index.ts`로 re-export
+
+---
+
+## 스타일링 규칙 (TailwindCSS v4)
+
+### 디자인 토큰 사용 원칙
+
+`style={{ color: 'var(--token-...)' }}` 인라인 스타일 **금지**.
+반드시 Tailwind 유틸리티 클래스로 작성한다.
+
+```tsx
+// 금지
+style={{ backgroundColor: 'var(--token-semantic-color-background-app)' }}
+
+// 권장
+className="bg-background-app"
+```
+
+### 토큰 → Tailwind 클래스 매핑 구조
+
+시맨틱 컬러 토큰은 `src/app/globals.css`의 `@theme inline` 블록에 **실제 hex 값**으로 직접 등록되어 있다.
+Tailwind v4는 `--color-*` 변수를 자동으로 `bg-*` / `text-*` / `border-*` 유틸리티로 노출한다.
+
+| `@theme inline` 변수 (`--color-`) | Tailwind 클래스 예시 |
+|-----------------------------------|----------------------|
+| `navigation-bg` | `bg-navigation-bg` |
+| `navigation-border` | `border-navigation-border` |
+| `navigation-active-text` | `text-navigation-active-text` |
+| `navigation-default-text` | `text-navigation-default-text` |
+| `background-app` | `bg-background-app` |
+| `background-surface` | `bg-background-surface` |
+| `border-default` | `border-border-default` |
+| `text-primary` | `text-text-primary` |
+| `text-brand` | `text-text-brand` |
+| `icon-brand` | `text-icon-brand` (fill="currentColor" SVG에 적용) |
+
+### 새 토큰 추가 시
+
+`globals.css`의 `@theme inline` 블록에 `--color-*: #hex값` 형태로 직접 추가한다. (`src/styles/tokens.css`는 primitive 팔레트 참조 전용이며, globals.css에서 import하지 않는다.)
 
 ---
 
