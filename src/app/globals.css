@@ -248,14 +248,152 @@
   --z-index-overlay: 30;
   --z-index-modal: 40;
 
-  /* radius scale */
-  --radius-sm: calc(var(--radius) * 0.6);
-  --radius-md: calc(var(--radius) * 0.8);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) * 1.4);
-  --radius-2xl: calc(var(--radius) * 1.8);
-  --radius-3xl: calc(var(--radius) * 2.2);
-  --radius-4xl: calc(var(--radius) * 2.6);
+  /* === primitive.fontSize (1rem = 10px) === */
+  --font-size-2xs:  1rem;
+  --font-size-xs:   1.1rem;
+  --font-size-sm:   1.2rem;
+  --font-size-md:   1.3rem;
+  --font-size-base: 1.4rem;
+  --font-size-lg:   1.5rem;
+  --font-size-xl:   1.6rem;
+  --font-size-2xl:  1.8rem;
+  --font-size-3xl:  2rem;
+  --font-size-4xl:  2.2rem;
+  --font-size-5xl:  2.4rem;
+  --font-size-6xl:  2.8rem;
+  --font-size-7xl:  3.2rem;
+  --font-size-8xl:  3.6rem;
+  --font-size-9xl:  4rem;
+
+  /* === primitive.fontWeight === */
+  --font-weight-thin:        100;
+  --font-weight-extra-light: 200;
+  --font-weight-light:       300;
+  --font-weight-regular:     400;
+  --font-weight-medium:      500;
+  --font-weight-semi-bold:   600;
+  --font-weight-bold:        700;
+  --font-weight-extra-bold:  800;
+  --font-weight-black:       900;
+
+  /* === primitive.lineHeight === */
+  --leading-none:    1;
+  --leading-tight:   1.1;
+  --leading-snug:    1.25;
+  --leading-normal:  1.4;
+  --leading-relaxed: 1.6;
+  --leading-loose:   2;
+
+  /* === primitive.letterSpacing === */
+  --tracking-tighter: -0.04em;
+  --tracking-tight:   -0.02em;
+  --tracking-normal:  0em;
+  --tracking-wide:    0.02em;
+  --tracking-wider:   0.04em;
+  --tracking-widest:  0.08em;
+
+  /* === primitive.spacing (1unit = 1px, 1rem = 10px) === */
+  --spacing-1:  0.1rem;
+  --spacing-2:  0.2rem;
+  --spacing-4:  0.4rem;
+  --spacing-6:  0.6rem;
+  --spacing-8:  0.8rem;
+  --spacing-10: 1rem;
+  --spacing-12: 1.2rem;
+  --spacing-14: 1.4rem;
+  --spacing-16: 1.6rem;
+  --spacing-18: 1.8rem;
+  --spacing-20: 2rem;
+  --spacing-22: 2.2rem;
+  --spacing-24: 2.4rem;
+  --spacing-28: 2.8rem;
+  --spacing-30: 3rem;
+  --spacing-32: 3.2rem;
+  --spacing-40: 4rem;
+  --spacing-48: 4.8rem;
+  --spacing-56: 5.6rem;
+  --spacing-64: 6.4rem;
+
+  /* radius scale — tokens.json primitive.borderRadius */
+  --radius-0: 0px;
+  --radius-2: 2px;
+  --radius-4: 4px;
+  --radius-6: 6px;
+  --radius-8: 8px;
+  --radius-10: 10px;
+  --radius-12: 12px;
+  --radius-14: 14px;
+  --radius-16: 16px;
+  --radius-20: 20px;
+  --radius-24: 24px;
+  --radius-28: 28px;
+  --radius-32: 32px;
+  --radius-full: 9999px;
+}
+
+@layer components {
+  /* === semantic.typography — 묶음 클래스 === */
+  .typography-h1 {
+    font-weight: var(--font-weight-extra-bold);
+    font-size: var(--font-size-7xl);
+    line-height: var(--leading-tight);
+    letter-spacing: var(--tracking-tight);
+  }
+  .typography-h2 {
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-5xl);
+    line-height: var(--leading-tight);
+  }
+  .typography-h3 {
+    font-weight: var(--font-weight-semi-bold);
+    font-size: var(--font-size-3xl);
+    line-height: var(--leading-snug);
+  }
+  .typography-body-lg {
+    font-weight: var(--font-weight-regular);
+    font-size: var(--font-size-lg);
+    line-height: var(--leading-normal);
+  }
+  .typography-body {
+    font-weight: var(--font-weight-regular);
+    font-size: var(--font-size-base);
+    line-height: var(--leading-normal);
+  }
+  .typography-body-sm {
+    font-weight: var(--font-weight-regular);
+    font-size: var(--font-size-md);
+    line-height: var(--leading-normal);
+  }
+  .typography-card-title {
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-xl);
+    line-height: var(--leading-tight);
+  }
+  .typography-chip {
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-sm);
+    line-height: var(--leading-none);
+  }
+  .typography-badge {
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-2xs);
+    line-height: var(--leading-none);
+  }
+  .typography-label {
+    font-weight: var(--font-weight-semi-bold);
+    font-size: var(--font-size-sm);
+    line-height: var(--leading-snug);
+  }
+  .typography-caption {
+    font-weight: var(--font-weight-regular);
+    font-size: var(--font-size-xs);
+    line-height: var(--leading-normal);
+  }
+  .typography-placeholder {
+    font-weight: var(--font-weight-regular);
+    font-size: var(--font-size-md);
+    line-height: var(--leading-none);
+  }
 }
 
 @layer base {

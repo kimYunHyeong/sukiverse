@@ -172,6 +172,8 @@ src/
 | **app/ 는 얇게** | 라우팅과 레이아웃만. 비즈니스 로직은 features/로 |
 
 ---
+- **page.tsx는 Server Component 유지** — SEO를 위해 `'use client'`를 page 파일에 붙이지 않는다.
+---
 
 ## 코드 컨벤션
 
