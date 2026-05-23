@@ -1,9 +1,5 @@
-import Image from "next/image";
+import SukiverseIcon from './icon.svg'
 
 export default function Home() {
-  return (
-    <main className="flex flex-1 items-center justify-center">
-      <Image src="/icon.svg" alt="sukiverse" width={100} height={100} priority />
-    </main>
-  );
+  return <SukiverseIcon className="size-[10rem]" />
 }
