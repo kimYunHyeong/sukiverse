@@ -68,7 +68,7 @@ function resolvePrimitive(value, tokens) {
   for (const part of parts) {
     resolved = resolved?.[part]
   }
-  return resolved?.['$value'] ?? value
+  return resolved?.['$value'] ?? resolved?.['value'] ?? value
 }
 
 function buildColorLines(colorObj, tokens, parentPath = []) {
@@ -76,8 +76,12 @@ function buildColorLines(colorObj, tokens, parentPath = []) {
   for (const [key, val] of Object.entries(colorObj)) {
     if (key.startsWith('$')) continue
     const currentPath = [...parentPath, toKebab(key)]
-    if (val['$type'] === 'color') {
-      const resolved = resolvePrimitive(val['$value'], tokens)
+    const isLeaf =
+      val['$type'] === 'color' || val['$value'] !== undefined || val['type'] === 'color'
+    if (isLeaf) {
+      const rawValue = val['$value'] ?? val['value']
+      if (!rawValue) continue
+      const resolved = resolvePrimitive(rawValue, tokens)
       lines.push(`  --color-${currentPath.join('-')}: ${resolved.toLowerCase()};`)
     } else {
       lines.push(...buildColorLines(val, tokens, currentPath))

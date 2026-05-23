@@ -21,10 +21,12 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang='ko' className={`${pretendard.variable} dark h-full antialiased`}>
+    <html
+      lang='ko'
+      className={`${pretendard.variable} dark h-full antialiased`}>
       <body className='bg-background-app flex min-h-full flex-col'>
         <main className='flex flex-1 items-center justify-center'>
-          <div className='border-background-hover relative flex h-[85.2rem] w-[39.3rem] items-center justify-center overflow-hidden rounded-2xl border'>
+          <div className='border-border-default relative flex h-[85.2rem] w-[39.3rem] items-center justify-center overflow-hidden rounded-2xl border'>
             {children}
             <NavigationBar />
           </div>

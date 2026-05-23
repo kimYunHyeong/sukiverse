@@ -95,7 +95,7 @@
 
 @theme inline {
   --font-sans: var(--font-sans);
-  --font-point: var(--font-ibm);
+  --font-point: var(--font-sans);
 
   /* shadcn/ui base */
   --color-sidebar-ring: var(--sidebar-ring);

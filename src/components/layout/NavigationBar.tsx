@@ -26,7 +26,9 @@ export default function NavigationBar() {
       <div className='flex items-center gap-5 self-stretch'>
         {NAV_ITEMS.map((item) => {
           const active =
-            pathname === item.href || pathname.startsWith(item.href + '/')
+            item.href === '/'
+              ? pathname === '/'
+              : pathname === item.href || pathname.startsWith(item.href + '/')
           return (
             <Link
               key={item.href}
