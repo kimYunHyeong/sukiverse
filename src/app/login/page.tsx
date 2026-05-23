@@ -1,6 +1,6 @@
 import SukiverseIcon from '@/app/icon.svg'
 import BackButton from '@/components/ui/BackButton'
-import LoginButton from '@/features/auth/components/LoginButton'
+import LoginFormSection from '@/features/auth/components/LoginFormSection'
 
 export const metadata = {
   title: '로그인 | sukiverse',
@@ -26,11 +26,7 @@ export default function LoginPage() {
         </div>
 
         {/* 로그인 버튼 영역 */}
-        <div className='flex w-full flex-col gap-10'>
-          <LoginButton provider='kakao' />
-          <LoginButton provider='naver' />
-          <LoginButton provider='google' />
-        </div>
+        <LoginFormSection />
       </div>
     </div>
   )

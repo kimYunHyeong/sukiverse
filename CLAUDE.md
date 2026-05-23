@@ -59,7 +59,7 @@
 
 ### 인증
 
-- **소셜 로그인**: next-auth@4 — Google OAuth + Kakao OAuth
+- **소셜 로그인**: next-auth@4 — Google OAuth + Kakao OAuth + Naver OAuth
 
 ### 상태 & 데이터
 
@@ -165,14 +165,16 @@ src/
 
 ### 폴더 구조 원칙
 
-| 원칙 | 설명 |
-|------|------|
-| **도메인 응집** | animation 관련 컴포넌트·훅·타입은 `features/animation/` 안에서만 |
-| **공통의 기준** | 2개 이상 도메인에서 쓰이면 `components/` 또는 `hooks/`로 올림 |
-| **app/ 는 얇게** | 라우팅과 레이아웃만. 비즈니스 로직은 features/로 |
+| 원칙             | 설명                                                             |
+| ---------------- | ---------------------------------------------------------------- |
+| **도메인 응집**  | animation 관련 컴포넌트·훅·타입은 `features/animation/` 안에서만 |
+| **공통의 기준**  | 2개 이상 도메인에서 쓰이면 `components/` 또는 `hooks/`로 올림    |
+| **app/ 는 얇게** | 라우팅과 레이아웃만. 비즈니스 로직은 features/로                 |
 
 ---
+
 - **page.tsx는 Server Component 유지** — SEO를 위해 `'use client'`를 page 파일에 붙이지 않는다.
+
 ---
 
 ## 코드 컨벤션
@@ -205,18 +207,18 @@ className="bg-background-app"
 시맨틱 컬러 토큰은 `src/app/globals.css`의 `@theme inline` 블록에 **실제 hex 값**으로 직접 등록되어 있다.
 Tailwind v4는 `--color-*` 변수를 자동으로 `bg-*` / `text-*` / `border-*` 유틸리티로 노출한다.
 
-| `@theme inline` 변수 (`--color-`) | Tailwind 클래스 예시 |
-|-----------------------------------|----------------------|
-| `navigation-bg` | `bg-navigation-bg` |
-| `navigation-border` | `border-navigation-border` |
-| `navigation-active-text` | `text-navigation-active-text` |
-| `navigation-default-text` | `text-navigation-default-text` |
-| `background-app` | `bg-background-app` |
-| `background-surface` | `bg-background-surface` |
-| `border-default` | `border-border-default` |
-| `text-primary` | `text-text-primary` |
-| `text-brand` | `text-text-brand` |
-| `icon-brand` | `text-icon-brand` (fill="currentColor" SVG에 적용) |
+| `@theme inline` 변수 (`--color-`) | Tailwind 클래스 예시                               |
+| --------------------------------- | -------------------------------------------------- |
+| `navigation-bg`                   | `bg-navigation-bg`                                 |
+| `navigation-border`               | `border-navigation-border`                         |
+| `navigation-active-text`          | `text-navigation-active-text`                      |
+| `navigation-default-text`         | `text-navigation-default-text`                     |
+| `background-app`                  | `bg-background-app`                                |
+| `background-surface`              | `bg-background-surface`                            |
+| `border-default`                  | `border-border-default`                            |
+| `text-primary`                    | `text-text-primary`                                |
+| `text-brand`                      | `text-text-brand`                                  |
+| `icon-brand`                      | `text-icon-brand` (fill="currentColor" SVG에 적용) |
 
 ### 새 토큰 추가 시
 
