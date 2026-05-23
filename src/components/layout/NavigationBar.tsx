@@ -14,6 +14,9 @@ const NAV_ITEMS = [
 export default function NavigationBar() {
   const pathname = usePathname()
 
+  /* 로그인 페이지에서는 랜더링되지 않음 */
+  if (pathname === '/login') return null
+
   return (
     <nav className='z-sticky border-navigation-border bg-navigation-bg absolute right-0 bottom-0 left-0 flex h-[6rem] items-center justify-between border-t px-16'>
       {/* 공간용 div */}
