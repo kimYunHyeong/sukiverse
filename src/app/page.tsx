@@ -1,54 +1,37 @@
+export const dynamic = 'force-dynamic'
+
 import { Suspense } from 'react'
-import SukiverseIcon from './icon.svg'
-import AnimeCard from '@/features/anime/components/AnimeCard'
+import AppHeader from '@/features/anime/components/AppHeader'
+import AnimeList from '@/features/anime/components/AnimeList'
 import GenreFilter from '@/features/anime/components/GenreFilter'
 import SortFilter from '@/features/anime/components/SortFilter'
-import { getAnimeList } from '@/services/animeService'
+import { getAnimeList } from '@/lib/server/animeData'
 import type { Genre, OrderBy } from '@/types/api/anime'
 
 interface HomeProps {
-  searchParams: Promise<{ genre?: string; orderBy?: string }>
+  searchParams: Promise<{ genre?: string; orderBy?: string; aniName?: string }>
 }
 
 export default async function Home({ searchParams }: HomeProps) {
-  const { genre, orderBy = 'Popularity' } = await searchParams
+  const { genre, orderBy = 'Popularity', aniName } = await searchParams
+  const genres = genre ? (Array.isArray(genre) ? genre : [genre]) as Genre[] : undefined
 
-  const animes = await getAnimeList({
-    genre: genre as Genre | undefined,
-    orderBy: orderBy as OrderBy,
-  }).catch(() => [])
+  let animes: Awaited<ReturnType<typeof getAnimeList>> = []
+  try {
+    animes = getAnimeList({
+      genres,
+      orderBy: orderBy as OrderBy,
+      aniName,
+    })
+  } catch {
+    animes = []
+  }
 
   return (
-    <div className='bg-background-app flex h-full flex-col pb-[6rem]'>
-      {/* 헤더 */}
-      <header className='flex items-center gap-4 px-5'>
-        <SukiverseIcon className='size-[4.5rem] shrink-0' />
-        <div className='border-input-border rounded-6 flex flex-1 items-center gap-8 border px-12 py-10'>
-          <svg
-            width='16'
-            height='16'
-            viewBox='0 0 16 16'
-            fill='none'
-            className='text-input-placeholder shrink-0'>
-            <circle
-              cx='7'
-              cy='7'
-              r='5.5'
-              stroke='currentColor'
-              strokeWidth='1.5'
-            />
-            <path
-              d='M11.5 11.5L14 14'
-              stroke='currentColor'
-              strokeWidth='1.5'
-              strokeLinecap='round'
-            />
-          </svg>
-          <span className='text-input-placeholder typography-placeholder'>
-            애니메이션 검색
-          </span>
-        </div>
-      </header>
+    <div className='bg-background-app flex h-full w-full flex-col pb-[6rem]'>
+      <Suspense fallback={<div className='h-[4.5rem]' />}>
+        <AppHeader />
+      </Suspense>
 
       {/* 바디 */}
       <div className='flex flex-1 flex-col gap-10 overflow-hidden'>
@@ -63,18 +46,8 @@ export default async function Home({ searchParams }: HomeProps) {
         </div>
 
         {/* 애니메이션 목록 */}
-        <div className='max-w-[32rem] flex-1 [scrollbar-width:none] overflow-y-auto px-12 [&::-webkit-scrollbar]:hidden'>
-          {animes.length === 0 ? (
-            <div className='text-text-dimmed flex h-full items-center justify-center text-[1.4rem]'>
-              검색 결과가 없습니다.
-            </div>
-          ) : (
-            <div className='grid grid-cols-2 gap-8'>
-              {animes.map((anime, i) => (
-                <AnimeCard key={anime.malId} anime={anime} priority={i < 2} />
-              ))}
-            </div>
-          )}
+        <div className='flex-1 [scrollbar-width:none] overflow-y-auto px-12 [&::-webkit-scrollbar]:hidden'>
+          <AnimeList animes={animes} />
         </div>
       </div>
     </div>

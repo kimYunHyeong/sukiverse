@@ -1,5 +1,6 @@
 import Image from 'next/image'
-import type { Anime } from '@/types/api/anime'
+import type { Anime, Genre } from '@/types/api/anime'
+import { GENRE_LABELS } from '@/types/api/anime'
 
 interface AnimeCardProps {
   anime: Anime
@@ -15,20 +16,19 @@ export default function AnimeCard({ anime, priority = false }: AnimeCardProps) {
   return (
     <div className='border-card-border bg-card-bg rounded-4 flex max-w-[32rem] flex-col overflow-hidden border'>
       {/* 썸네일 */}
-      <div className='bg-card-thumbnail-bg relative aspect-[2/3] w-[16rem] overflow-hidden'>
+      <div className='bg-card-thumbnail-bg relative aspect-[2/3] w-full overflow-hidden'>
         {anime.imageUrl ? (
           <Image
             src={anime.imageUrl}
             alt={anime.title}
             fill
-            sizes='(max-width: 640px) 50vw, 25vw'
             priority={priority}
             className='object-cover'
           />
         ) : (
           <div className='bg-card-thumbnail-empty h-full w-full' />
         )}
-        {anime.rank != null && (
+        {anime.rank != null && anime.rank <= 3 && (
           <div className='bg-badge-rank-bg border-badge-rank-border text-badge-rank-text typography-badge rounded-4 absolute top-4 left-4 border px-4 py-4'>
             {anime.rank}위
           </div>
@@ -59,7 +59,9 @@ export default function AnimeCard({ anime, priority = false }: AnimeCardProps) {
               {i > 0 && (
                 <span className='bg-text-dimmed inline-block h-2 w-2 rounded-full' />
               )}
-              <span className='text-text-dimmed typography-label'>{genre}</span>
+              <span className='text-text-dimmed typography-label'>
+                {GENRE_LABELS[genre as Genre] ?? genre}
+              </span>
             </span>
           ))}
         </div>

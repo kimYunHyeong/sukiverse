@@ -1,4 +1,19 @@
 {
+  "permissions": {
+    "allow": [
+      "Bash(gh api *)",
+      "PowerShell(gh api repos/github/awesome-copilot/contents/skills/create-specification/SKILL.md --jq '.content' | % { [System.Text.Encoding]::UTF8.GetString\\([System.Convert]::FromBase64String\\($_ -replace \"`n\",\"\"\\)\\) })",
+      "PowerShell(gh api repos/vercel-labs/skills/contents/skills/find-skills/SKILL.md --jq '.content' | % { [System.Text.Encoding]::UTF8.GetString\\([System.Convert]::FromBase64String\\($_ -replace \"`n\",\"\"\\)\\) })",
+      "PowerShell(gh api repos/anthropics/skills/contents/skills/frontend-design/SKILL.md --jq '.content' | % { [System.Text.Encoding]::UTF8.GetString\\([System.Convert]::FromBase64String\\($_ -replace \"`n\",\"\"\\)\\) })",
+      "PowerShell(git remote get-url origin)",
+      "PowerShell(gh pr list --state open --head develop)",
+      "PowerShell(Get-Command gh -ErrorAction SilentlyContinue)",
+      "PowerShell(npm list -g gh)"
+    ],
+    "additionalDirectories": [
+      "c:\\Users\\user\\Documents\\Github\\sukiverse\\.claude\\skills"
+    ]
+  },
   "enabledPlugins": {
     "andrej-karpathy-skills@karpathy-skills": true,
     "commit-commands@claude-plugins-official": true,
