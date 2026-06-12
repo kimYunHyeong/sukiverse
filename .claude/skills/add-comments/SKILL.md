@@ -18,7 +18,12 @@ description: 코드를 작성하거나 수정할 때 항상 적용하는 주석 
 
 ## 주석 형식
 
+### 타입 위 주석
+
+각 타입 위에도 주석을 작성합니다.
+
 ### 함수 위 주석
+
 함수나 컴포넌트 위에는 `/* */` 형식으로 한 줄 주석을 답니다.
 
 ```tsx
@@ -33,6 +38,7 @@ export default function AnimationListPage() { ... }
 ```
 
 ### JSX 섹션 주석
+
 JSX 내 구역 구분은 `{/* */}` 형식을 사용합니다.
 
 ```tsx
@@ -47,6 +53,7 @@ JSX 내 구역 구분은 `{/* */}` 형식을 사용합니다.
 ```
 
 ### 변수/상수 주석 (꼭 필요한 경우만)
+
 역할이 이름만으로 불분명한 경우에만 인라인 주석을 답니다.
 
 ```tsx
@@ -70,6 +77,7 @@ const LIMIT = 20 // 한 번에 불러올 최대 개수
 ## 예시
 
 **Before:**
+
 ```tsx
 export default function LoginPage() {
   return (
@@ -90,6 +98,7 @@ export default function LoginPage() {
 ```
 
 **After:**
+
 ```tsx
 /* 로그인 페이지 */
 export default function LoginPage() {

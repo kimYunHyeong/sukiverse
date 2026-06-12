@@ -19,6 +19,7 @@
 - 여러 해석이 가능하다면 제시하세요 — 몰래 하나를 선택하지 마세요.
 - 더 단순한 방법이 있다면 말하세요. 필요할 때는 반론을 제기하세요.
 - 불명확한 것이 있으면 멈추세요. 무엇이 혼란스러운지 짚고, 물어보세요.
+- 작성자의 제안보다 더 나은 대안들이 있다면 명확히 알려주세요.
 
 ## 2. 단순함 우선
 
@@ -82,30 +83,30 @@ Next.js App Router 구조에서 프론트엔드와 백엔드 코드를 명확히
 
 ### FE 전용 경로 — 클라이언트 관련 코드만 작성
 
-| 경로 | 설명 |
-|------|------|
-| `src/app/(pages)/` | 페이지 컴포넌트 및 레이아웃 |
-| `src/components/` | 재사용 가능한 UI 컴포넌트 |
-| `src/features/{domain}/components/` | 도메인별 전용 컴포넌트 |
-| `src/features/{domain}/hooks/` | 클라이언트 커스텀 훅 |
-| `src/features/{domain}/stores/` | Zustand 스토어 |
-| `src/lib/client/` | 브라우저 전용 유틸리티 |
+| 경로                                | 설명                        |
+| ----------------------------------- | --------------------------- |
+| `src/app/(pages)/`                  | 페이지 컴포넌트 및 레이아웃 |
+| `src/components/`                   | 재사용 가능한 UI 컴포넌트   |
+| `src/features/{domain}/components/` | 도메인별 전용 컴포넌트      |
+| `src/features/{domain}/hooks/`      | 클라이언트 커스텀 훅        |
+| `src/features/{domain}/stores/`     | Zustand 스토어              |
+| `src/lib/client/`                   | 브라우저 전용 유틸리티      |
 
 ### BE 전용 경로 — 서버에서만 실행되는 코드만 작성
 
-| 경로 | 설명 |
-|------|------|
-| `src/app/api/` | Next.js Route Handlers (GET/POST 등) |
-| `src/lib/server/` | 서버 전용 유틸리티 |
-| `src/services/` | 외부 API 클라이언트 (AniList, Spotify 등) |
+| 경로              | 설명                                      |
+| ----------------- | ----------------------------------------- |
+| `src/app/api/`    | Next.js Route Handlers (GET/POST 등)      |
+| `src/lib/server/` | 서버 전용 유틸리티                        |
+| `src/services/`   | 외부 API 클라이언트 (AniList, Spotify 등) |
 
 ### 공유 경로 — FE/BE 모두 참조 가능
 
-| 경로 | 설명 |
-|------|------|
-| `src/types/api/` | API 요청/응답 타입 정의 |
+| 경로               | 설명                    |
+| ------------------ | ----------------------- |
+| `src/types/api/`   | API 요청/응답 타입 정의 |
 | `src/lib/utils.ts` | 범용 유틸리티 (`cn` 등) |
-| `src/types/` | 공통 TypeScript 타입 |
+| `src/types/`       | 공통 TypeScript 타입    |
 
 ### 경계 규칙
 

@@ -1,0 +1,90 @@
+[
+  {
+    "malId": 5114,
+    "title": "강철의 연금술사: BROTHERHOOD",
+    "titleEnglish": "Fullmetal Alchemist: Brotherhood",
+    "titleJapanese": "鋼の錬金術師 FULLMETAL ALCHEMIST",
+    "year": 2009,
+    "score": 9.11,
+    "rank": 1,
+    "imageUrl": "https://cdn.myanimelist.net/images/anime/1208/94745l.jpg",
+    "genres": "Action,Adventure,Drama,Fantasy"
+  },
+  {
+    "malId": 9253,
+    "title": "슈타인즈 게이트",
+    "titleEnglish": "Steins;Gate",
+    "titleJapanese": "シュタインズ・ゲート",
+    "year": 2011,
+    "score": 9.08,
+    "rank": 2,
+    "imageUrl": "https://cdn.myanimelist.net/images/anime/5/73199l.jpg",
+    "genres": "Drama,Psychological,Sci-Fi,Thriller"
+  },
+  {
+    "malId": 11061,
+    "title": "헌터×헌터 (2011)",
+    "titleEnglish": "Hunter x Hunter (2011)",
+    "titleJapanese": "HUNTER×HUNTER（2011）",
+    "year": 2011,
+    "score": 9.04,
+    "rank": 3,
+    "imageUrl": "https://cdn.myanimelist.net/images/anime/1337/99013l.jpg",
+    "genres": "Action,Adventure,Fantasy"
+  },
+  {
+    "malId": 16498,
+    "title": "진격의 거인",
+    "titleEnglish": "Attack on Titan",
+    "titleJapanese": "進撃の巨人",
+    "year": 2013,
+    "score": 8.54,
+    "rank": 4,
+    "imageUrl": "https://cdn.myanimelist.net/images/anime/10/47347l.jpg",
+    "genres": "Action,Drama,Fantasy,Military"
+  },
+  {
+    "malId": 38000,
+    "title": "귀멸의 칼날",
+    "titleEnglish": "Demon Slayer",
+    "titleJapanese": "鬼滅の刃",
+    "year": 2019,
+    "score": 8.44,
+    "rank": 5,
+    "imageUrl": "https://cdn.myanimelist.net/images/anime/1286/99889l.jpg",
+    "genres": "Action,Fantasy,Historical"
+  },
+  {
+    "malId": 30276,
+    "title": "원펀맨",
+    "titleEnglish": "One Punch Man",
+    "titleJapanese": "ワンパンマン",
+    "year": 2015,
+    "score": 8.51,
+    "rank": 6,
+    "imageUrl": "https://cdn.myanimelist.net/images/anime/12/76049l.jpg",
+    "genres": "Action,Comedy,Sci-Fi,Super Power"
+  },
+  {
+    "malId": 1535,
+    "title": "데스 노트",
+    "titleEnglish": "Death Note",
+    "titleJapanese": "DEATH NOTE",
+    "year": 2006,
+    "score": 8.62,
+    "rank": 7,
+    "imageUrl": "https://cdn.myanimelist.net/images/anime/9/9453l.jpg",
+    "genres": "Mystery,Psychological,Supernatural,Thriller"
+  },
+  {
+    "malId": 21,
+    "title": "원피스",
+    "titleEnglish": "One Piece",
+    "titleJapanese": "ONE PIECE",
+    "year": 1999,
+    "score": 8.70,
+    "rank": null,
+    "imageUrl": "https://cdn.myanimelist.net/images/anime/6/73245l.jpg",
+    "genres": "Action,Adventure,Comedy,Fantasy"
+  }
+]

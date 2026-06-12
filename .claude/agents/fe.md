@@ -51,6 +51,8 @@ src/
 - 폼: `react-hook-form` + `zod`.
 - 클래스 병합: `clsx` + `tailwind-merge` (`cn` 유틸리티).
 - 타입: `any` 금지, 외부 API 응답은 반드시 `zod`로 검증.
+- 고정 픽셀: 1rem = 10px로 설정이 돼있으니 고정 픽셀의 경우 rem 방식을 적용할 것
+- className 활용: sizes, fill 등 테일윈드로 적용할 수 있는 속성들은 className안에 선언할 것
 
 ## API 연동 인터페이스
 
