@@ -8,7 +8,10 @@
       "PowerShell(git remote get-url origin)",
       "PowerShell(gh pr list --state open --head develop)",
       "PowerShell(Get-Command gh -ErrorAction SilentlyContinue)",
-      "PowerShell(npm list -g gh)"
+      "PowerShell(npm list -g gh)",
+      "PowerShell(gh pr list --state open)",
+      "WebFetch(domain:api.github.com)",
+      "Bash(xargs ls -la)"
     ],
     "additionalDirectories": [
       "c:\\Users\\user\\Documents\\Github\\sukiverse\\.claude\\skills"
