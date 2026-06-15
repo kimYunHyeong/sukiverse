@@ -28,7 +28,7 @@ export default async function Home({ searchParams }: HomeProps) {
   }
 
   return (
-    <div className='bg-background-app flex h-full w-full flex-col pb-[6rem] md:pb-0'>
+    <div className='bg-background-app flex h-full w-full flex-col'>
       {/* 헤더 — PC에서는 네비게이션 포함 */}
       <Suspense fallback={<div className='h-[4.5rem]' />}>
         <AppHeader />

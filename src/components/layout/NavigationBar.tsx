@@ -14,7 +14,7 @@ export default function NavigationBar() {
 
   return (
     /* 모바일 전용 하단 내비게이션 — PC에서는 AppHeader 내부에서 렌더링 */
-    <nav className='z-sticky border-navigation-border bg-navigation-bg absolute right-0 bottom-0 left-0 flex h-[6rem] items-center justify-between border-t px-16 md:hidden'>
+    <nav className='z-sticky border-navigation-border bg-navigation-bg border-t px-16 flex h-[6rem] items-center justify-between md:hidden'>
       {/* 공간용 div */}
       <div className='w-16'></div>
 
