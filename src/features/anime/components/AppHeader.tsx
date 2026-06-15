@@ -17,9 +17,15 @@ export default function AppHeader() {
   const [query, setQuery] = useState(searchParams.get('aniName') ?? '')
   const [focused, setFocused] = useState(false)
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+  const pathnameRef = useRef(pathname)
 
-  /* 검색어를 URL aniName 파라미터에 반영 */
+  useEffect(() => {
+    pathnameRef.current = pathname
+  }, [pathname])
+
+  /* 검색어를 URL aniName 파라미터에 반영 — 홈(/)에서만 동작 */
   const pushSearchRef = useRef((value: string) => {
+    if (pathnameRef.current !== '/') return
     const params = new URLSearchParams(searchParams.toString())
     if (value.trim()) {
       params.set('aniName', value.trim())
@@ -31,6 +37,7 @@ export default function AppHeader() {
 
   useEffect(() => {
     pushSearchRef.current = (value: string) => {
+      if (pathnameRef.current !== '/') return
       const params = new URLSearchParams(searchParams.toString())
       if (value.trim()) {
         params.set('aniName', value.trim())
