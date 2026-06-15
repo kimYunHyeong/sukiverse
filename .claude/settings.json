@@ -11,7 +11,10 @@
       "PowerShell(npm list -g gh)",
       "PowerShell(gh pr list --state open)",
       "WebFetch(domain:api.github.com)",
-      "Bash(xargs ls -la)"
+      "Bash(xargs ls -la)",
+      "Bash(npx playwright *)",
+      "WebSearch",
+      "WebFetch(domain:docs.sentry.io)"
     ],
     "additionalDirectories": [
       "c:\\Users\\user\\Documents\\Github\\sukiverse\\.claude\\skills"

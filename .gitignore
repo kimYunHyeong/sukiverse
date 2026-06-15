@@ -45,3 +45,6 @@ storybook-static
 
 # style-dictionary build output (generated — do not edit manually)
 src/styles/tokens.css
+
+# agent skills (Claude Code only, use .claude/skills/ instead)
+.agents/
