@@ -1,0 +1,70 @@
+language: "ko-KR"
+
+tone_instructions: |
+  리뷰는 간결하고 구체적으로 작성합니다.
+  단순함을 우선시하며, 불필요한 추상화나 과도한 복잡성을 지적합니다.
+  칭찬보다는 개선 포인트에 집중합니다.
+
+reviews:
+  auto_review:
+    enabled: true
+    drafts: false
+  profile: "chill"
+  request_changes_workflow: false
+  high_level_summary: true
+  poem: false
+  review_status: true
+  collapse_walkthrough: false
+
+  path_filters:
+    - "!**/*.md"
+    - "!**/*.json"
+    - "!**/*.svg"
+    - "!**/*.png"
+    - "!**/globals.css"
+    - "!**/tokens.css"
+
+  path_instructions:
+    - path: "src/app/api/**"
+      instructions: |
+        BE(백엔드) Route Handler입니다.
+        - FE 코드(components, features, lib/client)를 import하지 않는지 확인합니다.
+        - 서버 전용 파일에 `import 'server-only'`가 있는지 확인합니다.
+        - 환경변수는 `process.env.SECRET` 형태(NEXT_PUBLIC_ 아님)를 사용해야 합니다.
+
+    - path: "src/lib/server/**"
+      instructions: |
+        서버 전용 유틸리티입니다.
+        - `import 'server-only'`가 파일 상단에 있는지 확인합니다.
+        - FE 코드를 import하지 않는지 확인합니다.
+
+    - path: "src/services/**"
+      instructions: |
+        외부 API 클라이언트(AniList, Spotify 등)입니다.
+        - 서버에서만 실행되어야 하며 FE 코드를 import하지 않아야 합니다.
+
+    - path: "src/app/**/page.tsx"
+      instructions: |
+        Next.js App Router 페이지입니다.
+        - `'use client'`를 직접 선언하지 않아야 합니다. 클라이언트 로직은 별도 컴포넌트로 분리해야 합니다.
+        - SEO를 위해 Server Component로 유지되어야 합니다.
+
+    - path: "src/components/**"
+      instructions: |
+        재사용 가능한 UI 컴포넌트입니다.
+        - `src/app/api/`, `src/lib/server/`, `src/services/`를 import하지 않는지 확인합니다.
+        - 도메인에 종속된 로직이 포함되어 있다면 `src/features/{domain}/components/`로 이동을 제안합니다.
+
+    - path: "src/features/**"
+      instructions: |
+        도메인별 컴포넌트/훅/스토어입니다.
+        - `src/app/api/`, `src/lib/server/`, `src/services/`를 import하지 않는지 확인합니다.
+        - 여러 도메인에서 재사용된다면 `src/components/`로 이동을 제안합니다.
+
+    - path: "src/types/**"
+      instructions: |
+        공통 TypeScript 타입 정의입니다.
+        - FE/BE 모두 참조 가능하므로 런타임 의존성이 없어야 합니다.
+
+chat:
+  auto_reply: true
