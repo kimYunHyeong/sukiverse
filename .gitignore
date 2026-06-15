@@ -48,3 +48,6 @@ src/styles/tokens.css
 
 # agent skills (Claude Code only, use .claude/skills/ instead)
 .agents/
+
+# Claude Code local settings (machine-specific)
+.claude/settings.local.json
