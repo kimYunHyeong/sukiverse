@@ -18,7 +18,7 @@ export default async function Home({ searchParams }: HomeProps) {
 
   let animes: Awaited<ReturnType<typeof getAnimeList>> = []
   try {
-    animes = getAnimeList({
+    animes = await getAnimeList({
       genres,
       orderBy: orderBy as OrderBy,
       aniName,

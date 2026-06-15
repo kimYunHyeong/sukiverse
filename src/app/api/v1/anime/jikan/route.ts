@@ -10,7 +10,7 @@ export async function GET(request: NextRequest) {
   const aniName = searchParams.get('aniName') ?? undefined
 
   try {
-    const data = getAnimeList({ genres: genres.length > 0 ? genres : undefined, orderBy, aniName })
+    const data = await getAnimeList({ genres: genres.length > 0 ? genres : undefined, orderBy, aniName })
     return NextResponse.json(data)
   } catch (err) {
     const message = err instanceof Error ? err.message : '서버 내부 오류가 발생했습니다.'
