@@ -28,7 +28,8 @@ export default async function Home({ searchParams }: HomeProps) {
   }
 
   return (
-    <div className='bg-background-app flex h-full w-full flex-col pb-[6rem]'>
+    <div className='bg-background-app flex h-full w-full flex-col pb-[6rem] md:pb-0'>
+      {/* 헤더 — PC에서는 네비게이션 포함 */}
       <Suspense fallback={<div className='h-[4.5rem]' />}>
         <AppHeader />
       </Suspense>
@@ -46,7 +47,7 @@ export default async function Home({ searchParams }: HomeProps) {
         </div>
 
         {/* 애니메이션 목록 */}
-        <div className='flex-1 [scrollbar-width:none] overflow-y-auto px-12 [&::-webkit-scrollbar]:hidden'>
+        <div className='flex-1 overflow-y-auto px-5 [scrollbar-width:none] md:px-12 [&::-webkit-scrollbar]:hidden'>
           <AnimeList animes={animes} />
         </div>
       </div>

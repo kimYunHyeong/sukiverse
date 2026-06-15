@@ -15,9 +15,10 @@ export default function AnimeList({ animes }: AnimeListProps) {
   }
 
   return (
-    <div className='grid grid-cols-2 gap-8'>
+    /* 모바일 2열 → PC 4~6열 반응형 그리드 */
+    <div className='grid grid-cols-2 gap-8 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6'>
       {animes.map((anime, i) => (
-        <AnimeCard key={anime.aniId} anime={anime} priority={i < 2} />
+        <AnimeCard key={anime.aniId} anime={anime} priority={i < 6} />
       ))}
     </div>
   )

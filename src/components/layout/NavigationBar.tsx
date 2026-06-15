@@ -4,12 +4,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { cn } from '@/lib/utils'
 import LockIcon from '@/components/icons/lock.svg'
-
-const NAV_ITEMS = [
-  { label: 'J-POP', href: '/jpop' },
-  { label: '애니메이션', href: '/' },
-  { label: '성우', href: '/actor' },
-] as const
+import { NAV_ITEMS } from '@/lib/nav'
 
 export default function NavigationBar() {
   const pathname = usePathname()
@@ -18,7 +13,8 @@ export default function NavigationBar() {
   if (pathname === '/login') return null
 
   return (
-    <nav className='z-sticky border-navigation-border bg-navigation-bg absolute right-0 bottom-0 left-0 flex h-[6rem] items-center justify-between border-t px-16'>
+    /* 모바일 전용 하단 내비게이션 — PC에서는 AppHeader 내부에서 렌더링 */
+    <nav className='z-sticky border-navigation-border bg-navigation-bg absolute right-0 bottom-0 left-0 flex h-[6rem] items-center justify-between border-t px-16 md:hidden'>
       {/* 공간용 div */}
       <div className='w-16'></div>
 

@@ -14,7 +14,11 @@
       "Bash(xargs ls -la)",
       "Bash(npx playwright *)",
       "WebSearch",
-      "WebFetch(domain:docs.sentry.io)"
+      "WebFetch(domain:docs.sentry.io)",
+      "Bash(curl -L -s -o /dev/null -w \"%{http_code}\" \"https://unpkg.com/lucide-static@latest/icons/circle-x.svg\")",
+      "Bash(curl -L -s -o /dev/null -w \"%{http_code}\" \"https://unpkg.com/lucide-static@latest/icons/x-circle.svg\")",
+      "Bash(curl -L -s -o /dev/null -w \"%{http_code}\" \"https://unpkg.com/lucide-static@latest/icons/circle-x-mark.svg\")",
+      "Bash(wait)"
     ],
     "additionalDirectories": [
       "c:\\Users\\user\\Documents\\Github\\sukiverse\\.claude\\skills"

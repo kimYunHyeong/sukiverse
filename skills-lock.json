@@ -24,6 +24,12 @@
       "sourceType": "github",
       "skillPath": "engineering-team/skills/senior-frontend/SKILL.md",
       "computedHash": "e106cfe8f4d644c3b4d8177abde66e34e0f3f83cae114038715fa7aa4a06d57d"
+    },
+    "suggest-lucide-icons": {
+      "source": "nweii/agent-stuff",
+      "sourceType": "github",
+      "skillPath": "skills/suggest-lucide-icons/SKILL.md",
+      "computedHash": "e26d3a6140f50214bcbe42e93825a41fffb50912d80b079f36427a90923e4040"
     }
   }
 }

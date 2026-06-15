@@ -14,7 +14,7 @@ export default function AnimeCard({ anime, priority = false }: AnimeCardProps) {
     .slice(0, 3)
 
   return (
-    <div className='border-card-border bg-card-bg rounded-4 flex max-w-[32rem] flex-col overflow-hidden border'>
+    <div className='border-card-border bg-card-bg rounded-4 flex w-full flex-col overflow-hidden border'>
       {/* 썸네일 */}
       <div className='bg-card-thumbnail-bg relative aspect-[2/3] w-full overflow-hidden'>
         {anime.imageUrl ? (

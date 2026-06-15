@@ -26,7 +26,8 @@ export default function RootLayout({
       className={`${pretendard.variable} dark h-full antialiased`}>
       <body className='bg-background-app flex min-h-full flex-col'>
         <main className='flex flex-1 items-center justify-center'>
-          <div className='border-border-default relative flex h-[85.2rem] w-[39.3rem] items-center justify-center overflow-hidden rounded-2xl border'>
+          {/* 모바일: 고정 크기 카드 / PC: 전체 화면 */}
+          <div className='border-border-default relative flex h-[85.2rem] w-[39.3rem] items-center justify-center overflow-hidden rounded-2xl border md:h-screen md:w-full md:max-w-screen-2xl md:rounded-none md:border-x-0'>
             {children}
             <NavigationBar />
           </div>
