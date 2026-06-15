@@ -23,7 +23,8 @@
       "Bash(npx tsc *)",
       "Bash(node mocks/server.mjs)",
       "Bash(curl -s http://localhost:8080/v1/anime/jikan)",
-      "Bash(npm run *)"
+      "Bash(npm run *)",
+      "Bash(git config *)"
     ],
     "additionalDirectories": [
       "/Users/kim__yun_h/Documents/github/sukiverse/.claude/skills",
