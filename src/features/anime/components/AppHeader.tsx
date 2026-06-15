@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useRef, useCallback } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useRouter, useSearchParams, usePathname } from 'next/navigation'
 import Link from 'next/link'
 import { Search, CircleX } from 'lucide-react'
@@ -19,8 +19,18 @@ export default function AppHeader() {
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   /* 검색어를 URL aniName 파라미터에 반영 */
-  const pushSearch = useCallback(
-    (value: string) => {
+  const pushSearchRef = useRef((value: string) => {
+    const params = new URLSearchParams(searchParams.toString())
+    if (value.trim()) {
+      params.set('aniName', value.trim())
+    } else {
+      params.delete('aniName')
+    }
+    router.push(`/?${params}`)
+  })
+
+  useEffect(() => {
+    pushSearchRef.current = (value: string) => {
       const params = new URLSearchParams(searchParams.toString())
       if (value.trim()) {
         params.set('aniName', value.trim())
@@ -28,18 +38,17 @@ export default function AppHeader() {
         params.delete('aniName')
       }
       router.push(`/?${params}`)
-    },
-    [router, searchParams],
-  )
+    }
+  })
 
   /* 입력 변화 후 500ms 뒤에 검색 실행 */
   useEffect(() => {
     if (timerRef.current) clearTimeout(timerRef.current)
-    timerRef.current = setTimeout(() => pushSearch(query), 500)
+    timerRef.current = setTimeout(() => pushSearchRef.current(query), 500)
     return () => {
       if (timerRef.current) clearTimeout(timerRef.current)
     }
-  }, [query]) // pushSearch는 searchParams 변화마다 바뀌므로 의도적으로 제외
+  }, [query])
 
   return (
     <header className='flex flex-col px-5 md:px-10'>
